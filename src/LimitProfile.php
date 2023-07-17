@@ -112,7 +112,7 @@ abstract class LimitProfile
      * @return mixed
      * @throws FailedRequestException
      */
-    public function reservedAccountWithLimit(string $limitProfileCode, string $accountReference, string $accountName, string $customerEmail, string $customerName = null, bool $getAllAvailableBanks = false, string $customerBvn = null, string $currencyCode = null,): mixed
+    public function reservedAccountWithLimit(string $limitProfileCode, string $accountReference, string $accountName, string $customerEmail, string $customerName = null, bool $getAllAvailableBanks = false, string $customerBvn = null, string $currencyCode = null): mixed
     {
         $endpoint = "{$this->monnify->baseUrl}{$this->monnify->v1}/bank-transfer/reserved-accounts/limit";
 

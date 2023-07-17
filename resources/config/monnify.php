@@ -2,7 +2,7 @@
 
 return [
 
-    'base_url' => env('MONNIFY_BASE_URL', 'https://sandbox.monnify.com/api'),
+    'base_url' => env('MONNIFY_BASE_URL', 'https://sandbox.monnify.com'),
 
     'api_key' => env('MONNIFY_API_KEY', ''),
 

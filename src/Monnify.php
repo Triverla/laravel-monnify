@@ -4,6 +4,7 @@ namespace Triverla\LaravelMonnify;
 
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 use Triverla\LaravelMonnify\Exceptions\FailedRequestException;
 
 class Monnify
@@ -206,6 +207,16 @@ class Monnify
             $this->settlement = new class($this, $this->config) extends Settlement {
             };
         return $this->settlement;
+    }
+
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    public function genTransactionReference(): string
+    {
+        $randomString = bin2hex(random_bytes(4));
+        return 'MN' . $randomString;
     }
 
 }

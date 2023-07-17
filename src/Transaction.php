@@ -117,6 +117,25 @@ abstract class Transaction
     }
 
     /**
+     * @param string $paymentReference
+     * @return mixed
+     * @throws FailedRequestException
+     */
+    public function getTransactionStatusByPaymentReference(string $paymentReference): mixed
+    {
+        $endpoint = "{$this->monnify->baseUrl}{$this->monnify->v1}/merchant/transactions/query?paymentReference=$paymentReference";
+
+        $response = $this->monnify->withOAuth()->get($endpoint);
+
+        $result = $response->object();
+        if ($response->failed()) {
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+        }
+
+        return $result->responseBody;
+    }
+
+    /**
      * @param string $transactionReference
      * @param string $bankCode
      * @return mixed
