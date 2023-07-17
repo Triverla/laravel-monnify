@@ -1,7 +1,23 @@
 {
     "name": "triverla/laravel-monnify",
-    "description": "A laravel package to seamlessly integrate monnify api within your laravel application",
-    "type": "project",
+    "description": "A laravel package for Monnify",
+    "keywords": [
+        "php",
+        "github",
+        "laravel",
+        "Open Source",
+        "payments",
+        "transactions",
+        "subscription",
+        "monnify",
+        "monnify.com",
+        "laravel 6",
+        "laravel 7",
+        "laravel 8",
+        "laravel 9",
+        "laravel 10"
+    ],
+    "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -16,9 +32,9 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.2|^8.0",
-        "illuminate/support": "^7.0|^8.0",
-        "guzzlehttp/guzzle": "^7.0",
+        "php": "^7.2|^8.0|^8.1",
+        "illuminate/support":  "~6|~7|~8|~9|^10.0",
+        "guzzlehttp/guzzle": "~6|~7|~8|~9",
         "ext-json": "*"
     },
     "require-dev": {
