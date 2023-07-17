@@ -1,0 +1,49 @@
+{
+    "name": "triverla/laravel-monnify",
+    "description": "A laravel package to seamlessly integrate monnify api within your laravel application",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Triverla\\LaravelMonnify\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Benaiah Yusuf",
+            "email": "yusufbenaiah@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2|^8.0",
+        "illuminate/support": "^7.0|^8.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "mockery/mockery": "1.*",
+        "orchestra/testbench": "^5.0|^6.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Triverla\\LaravelMonnify\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "test-f": "vendor/bin/phpunit --filter"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Triverla\\LaravelMonnify\\LaravelMonnifyServiceProvider"
+            ],
+            "aliases": {
+                "Monnify": "Triverla\\LaravelMonnify\\Facades\\Monnify"
+            }
+        }
+    }
+}
