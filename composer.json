@@ -55,7 +55,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Triverla\\LaravelMonnify\\LaravelMonnifyServiceProvider"
+                "Triverla\\LaravelMonnify\\MonnifyServiceProvider"
             ],
             "aliases": {
                 "Monnify": "Triverla\\LaravelMonnify\\Facades\\Monnify"
