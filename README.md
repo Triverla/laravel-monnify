@@ -39,7 +39,7 @@ Also, register the Facade like so:
 ```php
 'aliases' => [
     ...
-    'Monnify' => Triverla\LaravelMonnify\MonnifyServiceProvider::class\Facades\Paystack::class,
+    'Monnify' => Triverla\LaravelMonnify\Facades\Monnify::class,
     ...
 ]
 ```
