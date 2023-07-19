@@ -51,6 +51,7 @@ You can publish the configuration file using this command:
 ```bash
 php artisan vendor:publish --provider="Triverla\LaravelMonnify\MonnifyServiceProvider"
 ```
+A configuration file `monnify.php` with some sensible defaults will be placed in your `config` directory as displayed below:
 
 ```php
 <?php
