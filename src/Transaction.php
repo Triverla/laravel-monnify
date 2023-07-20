@@ -56,7 +56,7 @@ abstract class Transaction
      * @return mixed
      * @throws FailedRequestException
      */
-    public function initializeTransaction(float $amount, string $customerName, string $customerEmail, string $paymentReference, string $paymentDescription, string $redirectUrl, PaymentMethods $paymentMethods, IncomeSplitConfig $incomeSplitConfig = null, string $currencyCode = null): mixed
+    public function initializeTransaction(float $amount, string $customerName, string $customerEmail, string $paymentReference, string $paymentDescription, string $redirectUrl, PaymentMethods $paymentMethods, IncomeSplitConfig $incomeSplitConfig = null, string $currencyCode = null, $metadata = null): mixed
     {
         $endpoint = "{$this->monnify->baseUrl}{$this->monnify->v1}/merchant/transactions/init-transaction";
 
@@ -73,6 +73,9 @@ abstract class Transaction
         ];
         if ($incomeSplitConfig !== null)
             $requestPayload["incomeSplitConfig"] = $incomeSplitConfig->toArray();
+
+        if (!is_null($metadata))
+            $requestPayload["metadata"] = is_object($metadata) ? $metadata : (object)$metadata;
 
         $response = $this->monnify->withOAuth()->post($endpoint, $requestPayload);
 
