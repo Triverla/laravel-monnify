@@ -177,7 +177,7 @@ class PaymentController extends Controller
     public function redirectToMonnifyGateway()
     {
         try{
-            return Monnify::Payment()->makePaymentRequest()->redirectNow();
+            return Monnify::payment()->makePaymentRequest()->redirectNow();
         }catch(\Exception $e) {
             return Redirect::back()->withMessage(['message'=>'The Monnify token has expired. Please refresh the page and try again.', 'type'=>'error']);
         }        
@@ -189,7 +189,7 @@ class PaymentController extends Controller
      */
     public function handleGatewayCallback()
     {
-        $paymentDetails = Monnify::Payment()->getPaymentData();
+        $paymentDetails = Monnify::payment()->getPaymentData();
 
         dd($paymentDetails);
         // Now you have the payment details,
@@ -219,7 +219,7 @@ $data = array(
         "paymentMethods" => ['CARD', 'ACCOUNT_TRANSFER']
     );
 
-return  Monnify::Payment()->makePaymentRequest($data)->redirectNow();
+return  Monnify::payment()->makePaymentRequest($data)->redirectNow();
 
 ```
 
@@ -266,60 +266,60 @@ Other methods include
     use Triverla\LaravelMonnify\Facades\Monnify;
     
     //Banks
-    $response = Monnify::Bank()->getBanks();
-    $response = Monnify::Bank()->getBanksWithUSSDShortCode();
-    $response = Monnify::Bank()->validateBankAccount(BankAccount $bankAccount);
+    $response = Monnify::bank()->getBanks();
+    $response = Monnify::bank()->getBanksWithUSSDShortCode();
+    $response = Monnify::bank()->validateBankAccount(BankAccount $bankAccount);
     
     
     //Reserved Accounts
-    $response = Monnify::ReservedAccount()->getAllTransactions(array $queryParams);
-    $response = Monnify::ReservedAccount()->reserveAccount(string $accountReference, string $accountName, string $customerEmail, string $customerName = null, string $customerBvn = null, string $currencyCode = null, bool $restrictPaymentSource = false, AllowedPaymentSources $allowedPaymentSources = null, IncomeSplitConfig $incomeSplitConfig = null);
-    $response = Monnify::ReservedAccount()->getAccountDetails(string $accountReference);
-    $response = Monnify::ReservedAccount()->updateSplitConfig(string $accountReference, IncomeSplitConfig $incomeSplitConfig);
+    $response = Monnify::reservedAccount()->getAllTransactions(array $queryParams);
+    $response = Monnify::reservedAccount()->reserveAccount(string $accountReference, string $accountName, string $customerEmail, string $customerName = null, string $customerBvn = null, string $currencyCode = null, bool $restrictPaymentSource = false, AllowedPaymentSources $allowedPaymentSources = null, IncomeSplitConfig $incomeSplitConfig = null);
+    $response = Monnify::reservedAccount()->getAccountDetails(string $accountReference);
+    $response = Monnify::reservedAccount()->updateSplitConfig(string $accountReference, IncomeSplitConfig $incomeSplitConfig);
 
 
     //Disbursements
-    $response = Monnify::Disbursement()->initiateTransferSingle(float $amount, string $reference, string $narration, MonnifyBankAccount $bankAccount, string $currencyCode = null);
-    $response = Monnify::Disbursement()->initiateTransferSingleWithMonnifyTransaction(Tranx $tranx);
-    $response = Monnify::Disbursement()->initiateTransferBulk(string $title, string $batchReference, string $narration, OnFailureValidate $onFailureValidate, int $notificationInterval, TranxList $tranxList);
-    $response = Monnify::Disbursement()->authorizeTransfer2FA(string $authorizationCode, string $reference, string $path);
+    $response = Monnify::disbursement()->initiateTransferSingle(float $amount, string $reference, string $narration, MonnifyBankAccount $bankAccount, string $currencyCode = null);
+    $response = Monnify::disbursement()->initiateTransferSingleWithMonnifyTransaction(Tranx $tranx);
+    $response = Monnify::disbursement()->initiateTransferBulk(string $title, string $batchReference, string $narration, OnFailureValidate $onFailureValidate, int $notificationInterval, TranxList $tranxList);
+    $response = Monnify::disbursement()->authorizeTransfer2FA(string $authorizationCode, string $reference, string $path);
     
     
     //Invoices
-    $response = Monnify::Invoice()->getAllInvoices();
-    $response = Monnify::Invoice()->createAnInvoice(float $amount, $expiryDateTime, string $customerName, string $customerEmail, string $invoiceReference, string $invoiceDescription, string $redirectUrl, PaymentMethods $paymentMethods, IncomeSplitConfig $incomeSplitConfig = null, string $currencyCode = null);
-    $response = Monnify::Invoice()->viewInvoiceDetails(string $invoiceReference);
-    $response = Monnify::Invoice()->cancelInvoice();
-    $response = Monnify::Invoice()->reservedAccountInvoicing(string $accountName, string $customerName, string $customerEmail, string $accountReference, string $currencyCode = null);
-    $response = Monnify::Invoice()->attachReservedAccountToInvoice(float $amount, $expiryDateTime, string $customerName, string $customerEmail, string $invoiceReference, string $accountReference, string $invoiceDescription, IncomeSplitConfig $incomeSplitConfig = null, string $currencyCode = null);
+    $response = Monnify::invoice()->getAllInvoices();
+    $response = Monnify::invoice()->createAnInvoice(float $amount, $expiryDateTime, string $customerName, string $customerEmail, string $invoiceReference, string $invoiceDescription, string $redirectUrl, PaymentMethods $paymentMethods, IncomeSplitConfig $incomeSplitConfig = null, string $currencyCode = null);
+    $response = Monnify::invoice()->viewInvoiceDetails(string $invoiceReference);
+    $response = Monnify::invoice()->cancelInvoice();
+    $response = Monnify::invoice()->reservedAccountInvoicing(string $accountName, string $customerName, string $customerEmail, string $accountReference, string $currencyCode = null);
+    $response = Monnify::invoice()->attachReservedAccountToInvoice(float $amount, $expiryDateTime, string $customerName, string $customerEmail, string $invoiceReference, string $accountReference, string $invoiceDescription, IncomeSplitConfig $incomeSplitConfig = null, string $currencyCode = null);
 
 
     //SubAccounts
-    $response = Monnify::SubAccount()->createSubAccount(string $bankCode, string $accountNumber, string $email, string $currencyCode = null, string $splitPercentage = null);
-    $response = Monnify::SubAccount()->createSubAccounts(array $accounts);
-    $response = Monnify::SubAccount()->getSubAccounts();
-    $response = Monnify::SubAccount()->deleteSubAccount(string $subAccountCode);
+    $response = Monnify::subAccount()->createSubAccount(string $bankCode, string $accountNumber, string $email, string $currencyCode = null, string $splitPercentage = null);
+    $response = Monnify::subAccount()->createSubAccounts(array $accounts);
+    $response = Monnify::subAccount()->getSubAccounts();
+    $response = Monnify::subAccount()->deleteSubAccount(string $subAccountCode);
 
 
     //Refunds
-     $response = Monnify::Refund()->initiateRefund(string $transactionReference, string $refundReference, float $refundAmount, string $refundReason, string $customerNote, string $destinationAccountNumber, string $destinationAccountBankCode);
-     $response = Monnify::Refund()->getRefundStatus(string $refundReference);
-     $response = Monnify::Refund()->getAllRefunds(int $pageNo = 0, int $pageSize = 10);
+     $response = Monnify::refund()->initiateRefund(string $transactionReference, string $refundReference, float $refundAmount, string $refundReason, string $customerNote, string $destinationAccountNumber, string $destinationAccountBankCode);
+     $response = Monnify::refund()->getRefundStatus(string $refundReference);
+     $response = Monnify::refund()->getAllRefunds(int $pageNo = 0, int $pageSize = 10);
 
 
     //Transactions
-    $response = Monnify::Transaction()->getAllTransactions(array $queryParams);
-    $response = Monnify::Transaction()->initializeTransaction(float $amount, string $customerName, string $customerEmail, string $paymentReference, string $paymentDescription, string $redirectUrl, PaymentMethods $paymentMethods, IncomeSplitConfig $incomeSplitConfig = null, string $currencyCode = null);
-    $response = Monnify::Transaction()->calculateHash(string $paymentReference, $amountPaid, string $paidOn, string $transactionReference);
-    $response = Monnify::Transaction()->getTransactionStatus(string $transactionReference);
-    $response = Monnify::Transaction()->getTransactionStatusByPaymentReference(string $paymentReference);
-    $response = Monnify::Transaction()->payWithBankTransfer(string $transactionReference, string $bankCode);
+    $response = Monnify::transaction()->getAllTransactions(array $queryParams);
+    $response = Monnify::transaction()->initializeTransaction(float $amount, string $customerName, string $customerEmail, string $paymentReference, string $paymentDescription, string $redirectUrl, PaymentMethods $paymentMethods, IncomeSplitConfig $incomeSplitConfig = null, string $currencyCode = null);
+    $response = Monnify::transaction()->calculateHash(string $paymentReference, $amountPaid, string $paidOn, string $transactionReference);
+    $response = Monnify::transaction()->getTransactionStatus(string $transactionReference);
+    $response = Monnify::transaction()->getTransactionStatusByPaymentReference(string $paymentReference);
+    $response = Monnify::transaction()->payWithBankTransfer(string $transactionReference, string $bankCode);
 
 
     //Verification APIs
-     $response = Monnify::Verify()->bvn(string $bvnNo, string $accountName, string $dateOfBirth, string $mobileNo);
-     $response = Monnify::Verify()->bvnAccountMatch(string $bvnNo, string $accountNumber, string $bankCode);
-     $response = Monnify::Verify()->validateBankAccount(string $accountNumber, string $bankCode);
+     $response = Monnify::verify()->bvn(string $bvnNo, string $accountName, string $dateOfBirth, string $mobileNo);
+     $response = Monnify::verify()->bvnAccountMatch(string $bvnNo, string $accountNumber, string $bankCode);
+     $response = Monnify::verify()->validateBankAccount(string $accountNumber, string $bankCode);
 
     // and many more
 ```
