@@ -91,7 +91,7 @@ class Monnify
     /**
      * @return Bank
      */
-    public function Bank(): Bank
+    public function bank(): Bank
     {
         if (is_null($this->banks))
             $this->banks = new class($this, $this->config) extends Bank {
@@ -102,7 +102,7 @@ class Monnify
     /**
      * @return ReservedAccount
      */
-    public function ReservedAccount(): ReservedAccount
+    public function reservedAccount(): ReservedAccount
     {
         if (is_null($this->reservedAccount))
             $this->reservedAccount = new class($this, $this->config) extends ReservedAccount {
@@ -113,7 +113,7 @@ class Monnify
     /**
      * @return Disbursement
      */
-    public function Disbursement(): Disbursement
+    public function disbursement(): Disbursement
     {
         if (is_null($this->disbursement))
             $this->disbursement = new class($this, $this->config) extends Disbursement {
@@ -124,7 +124,7 @@ class Monnify
     /**
      * @return Invoice
      */
-    public function Invoice(): Invoice
+    public function invoice(): Invoice
     {
         if (is_null($this->invoice))
             $this->invoice = new class($this, $this->config) extends Invoice {
@@ -135,7 +135,7 @@ class Monnify
     /**
      * @return SubAccount
      */
-    public function SubAccount(): SubAccount
+    public function subAccount(): SubAccount
     {
         if (is_null($this->subAccount))
             $this->subAccount = new class($this, $this->config) extends SubAccount {
@@ -146,7 +146,7 @@ class Monnify
     /**
      * @return Transaction
      */
-    public function Transaction(): Transaction
+    public function transaction(): Transaction
     {
         if (is_null($this->transaction))
             $this->transaction = new class($this, $this->config) extends Transaction {
@@ -157,7 +157,7 @@ class Monnify
     /**
      * @return Payment
      */
-    public function Payment(): Payment
+    public function payment(): Payment
     {
         if (is_null($this->payment))
             $this->payment= new class($this, $this->config) extends Payment {
@@ -168,7 +168,7 @@ class Monnify
     /**
      * @return Verify
      */
-    public function Verify(): Verify
+    public function verify(): Verify
     {
         if (is_null($this->verify))
             $this->verify = new class($this, $this->config) extends Verify {
@@ -179,7 +179,7 @@ class Monnify
     /**
      * @return Refund
      */
-    public function Refund(): Refund
+    public function refund(): Refund
     {
         if (is_null($this->refund))
             $this->refund = new class($this, $this->config) extends Refund {
@@ -190,7 +190,7 @@ class Monnify
     /**
      * @return LimitProfile
      */
-    public function LimitProfile(): LimitProfile
+    public function limitProfile(): LimitProfile
     {
         if (is_null($this->limitProfile))
             $this->limitProfile = new class($this, $this->config) extends LimitProfile {
@@ -201,7 +201,7 @@ class Monnify
     /**
      * @return Settlement
      */
-    public function Settlement(): Settlement
+    public function settlement(): Settlement
     {
         if (is_null($this->settlement))
             $this->settlement = new class($this, $this->config) extends Settlement {

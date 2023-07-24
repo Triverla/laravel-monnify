@@ -18,16 +18,15 @@ class Monnify extends Facade
     /**
      * @method static string computeRequestValidationHashTest(string $data)
      * @method static string computeRequestValidationHash(string $data)
-     * @method static Bank Bank()
-     * @method static ReservedAccount ReservedAccount()
-     * @method static Disbursement Disbursement()
-     * @method static SubAccount SubAccount()
-     * @method static Transaction Transaction()
-     * @method static Transaction Transaction()
-     * @method static Payment Payment()
-     * @method static Verify Verify()
-     * @method static Refund Refund()
-     * @method static Settlement Settlement()
+     * @method static Bank bank()
+     * @method static ReservedAccount reservedAccount()
+     * @method static Disbursement disbursement()
+     * @method static SubAccount subAccount()
+     * @method static Transaction transaction()
+     * @method static Payment payment()
+     * @method static Verify verify()
+     * @method static Refund refund()
+     * @method static Settlement settlement()
      *
      */
     protected static function getFacadeAccessor(): string
