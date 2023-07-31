@@ -279,7 +279,7 @@ Other methods include
 
 
     //Disbursements
-    $response = Monnify::disbursement()->initiateTransferSingle(float $amount, string $reference, string $narration, MonnifyBankAccount $bankAccount, string $currencyCode = null);
+    $response = Monnify::disbursement()->initiateTransferSingle(float $amount, string $reference, string $narration, BankAccount $bankAccount, string $currencyCode = null);
     $response = Monnify::disbursement()->initiateTransferSingleWithMonnifyTransaction(Tranx $tranx);
     $response = Monnify::disbursement()->initiateTransferBulk(string $title, string $batchReference, string $narration, OnFailureValidate $onFailureValidate, int $notificationInterval, TranxList $tranxList);
     $response = Monnify::disbursement()->authorizeTransfer2FA(string $authorizationCode, string $reference, string $path);
