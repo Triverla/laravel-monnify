@@ -20,6 +20,7 @@ class MonnifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         if (function_exists('config_path') && $this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../resources/config/monnify.php' => config_path('monnify.php'),
