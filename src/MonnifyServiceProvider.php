@@ -20,7 +20,7 @@ class MonnifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::middleware('web')->group(function () {
+        Route::middleware('api')->group(function () {
             $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         });
 
