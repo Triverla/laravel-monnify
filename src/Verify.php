@@ -31,7 +31,7 @@ abstract class Verify
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;
@@ -52,7 +52,7 @@ abstract class Verify
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;
@@ -71,7 +71,7 @@ abstract class Verify
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;

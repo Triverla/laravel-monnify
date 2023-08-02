@@ -30,18 +30,18 @@ abstract class Disbursement
             "amount" => $amount,
             "reference" => trim($reference),
             "narration" => trim($narration),
-            "bankCode" => $bankAccount->getBankCode(),
-            "accountNumber" => $bankAccount->getAccountNumber(),
+            "destinationBankCode" => $bankAccount->getBankCode(),
+            "destinationAccountNumber" => $bankAccount->getAccountNumber(),
             "currency" => $currencyCode ?? $this->config['default_currency_code'],
             "sourceAccountNumber" => $this->config['source_account_number']
         ]);
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
-        return $result->initiateTransferSingle;
+        return $result->responseBody;
     }
 
 
@@ -71,7 +71,7 @@ abstract class Disbursement
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;
@@ -90,7 +90,7 @@ abstract class Disbursement
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;
@@ -122,7 +122,7 @@ abstract class Disbursement
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;
@@ -155,7 +155,7 @@ abstract class Disbursement
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;
@@ -171,7 +171,7 @@ abstract class Disbursement
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;
@@ -203,7 +203,7 @@ abstract class Disbursement
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;
@@ -221,7 +221,7 @@ abstract class Disbursement
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;
@@ -238,7 +238,7 @@ abstract class Disbursement
 
         $result = $response->object();
         if ($response->failed()) {
-            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}", $result->responseCode ?? 500);
+            throw new FailedRequestException($result->responseMessage ?? "{$result->error} - {$result->error_description}");
         }
 
         return $result->responseBody;
